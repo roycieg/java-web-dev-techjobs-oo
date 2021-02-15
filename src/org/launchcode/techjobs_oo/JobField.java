@@ -2,34 +2,33 @@ package org.launchcode.techjobs_oo;
 
 import java.util.Objects;
 
-public class CoreCompetency {
+
+public class JobField {
     private int id;
     private static int nextId = 1;
     private String value;
 
-    public CoreCompetency() {
-        this.id = nextId;
+    public JobField(){
+        id = nextId;
         nextId++;
     }
 
-    public CoreCompetency(String value) {
+    public JobField(String value){
         this();
         this.value = value;
     }
 
-    // Custom toString, equals, and hashCode methods:
-
     @Override
-    public String toString() {
+    public String toString(){
         return value;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CoreCompetency)) return false;
-        CoreCompetency that = (CoreCompetency) o;
-        return id == that.id;
+        if (!(o instanceof JobField)) return false;
+        JobField jobField = (JobField) o;
+        return getId() == jobField.getId();
     }
 
     @Override
@@ -37,8 +36,23 @@ public class CoreCompetency {
         return Objects.hash(id);
     }
 
-    // TODO: Use the "Generate" tool to add a getter and setter for the 'value' field but
-    //  ONLY a getter for the 'id' field.
+    // getters and setters
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public static int getNextId() {
+        return nextId;
+    }
+
+    public static void setNextId(int nextId) {
+        JobField.nextId = nextId;
+    }
 
     public String getValue() {
         return value;
@@ -46,9 +60,5 @@ public class CoreCompetency {
 
     public void setValue(String value) {
         this.value = value;
-    }
-
-    public int getId() {
-        return id;
     }
 }
