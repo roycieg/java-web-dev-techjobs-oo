@@ -1,5 +1,4 @@
 package org.launchcode.techjobs_oo;
-
 import java.util.Objects;
 
 public class Job {
@@ -16,13 +15,12 @@ public class Job {
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
-
-    public Job(){
+    public Job() {
         id = nextId;
         nextId++;
     }
 
-    public Job(int id, String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency){
+    public Job(int id, String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this();
         this.id = id;
         this.name = name;
@@ -39,17 +37,34 @@ public class Job {
     //  match.
 
     @Override
-    public boolean equals(Object o){
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
         return id == job.id;
     }
-    @Override
-    public int hashCode(){
-        return Objects.hash(id);
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
+
+    public String toString(Job obj) {
+        if (obj.getName() == null) {
+            return "\n" + "ID: " + obj.getId() + "\n" + "Data not available" + "\n" + "Employer: " + obj.getEmployer() + "\n" + "Location: " + obj.getLocation() + "\n" + "Position Type: " + obj.getPositionType() + "\n" + "Core Competency: " + obj.getCoreCompetency() + "\n";
+        } else if (obj.getEmployer() == null) {
+            return "\n" + "ID: " + obj.getId() + "\n" + "Name: " + obj.getName() + "\n" + "Data not available" + "\n" + "Location: " + obj.getLocation() + "\n" + "Position Type: " + obj.getPositionType() + "\n" + "Core Competency: " + obj.getCoreCompetency() + "\n";
+        } else if (obj.getLocation() == null) {
+            return "\n" + "ID: " + obj.getId() + "\n" + "Name: " + obj.getName() + "\n" + "Employer: " + obj.getEmployer() + "\n" + "Data not available" + "\n" + "Position Type: " + obj.getPositionType() + "\n" + "Core Competency: " + obj.getCoreCompetency() + "\n";
+        } else if (obj.getPositionType() == null) {
+            return "\n" + "ID: " + obj.getId() + "\n" + "Name: " + obj.getName() + "\n" + "Employer: " + obj.getEmployer() + "\n" + "Location: " + obj.getLocation() + "\n" + "Data not available" + "\n" + "Core Competency: " + obj.getCoreCompetency() + "\n";
+        } else if (obj.getCoreCompetency() == null) {
+            return "\n" + "ID: " + obj.getId() + "\n" + "Name: " + obj.getName() + "\n" + "Employer: " + obj.getEmployer() + "\n" + "Location: " + obj.getLocation() + "\n" + "Position Type: " + obj.getPositionType() + "\n" + "Data not available" + "\n";
+        } else {
+            return "\n" + "ID: " + obj.getId() + "\n" + "Name: " + obj.getName() + "\n" + "Employer: " + obj.getEmployer() + "\n" + "Location: " + obj.getLocation() + "\n" + "Position Type: " + obj.getPositionType() + "\n" + "Core Competency: " + obj.getCoreCompetency() + "\n";
+        }
+    }
+
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
@@ -78,24 +93,15 @@ public class Job {
         this.location = location;
     }
 
-    public PositionType getPositionType() {
-        return positionType;
+    public double getId() {
+        return 0;
     }
 
-    public void setPositionType(PositionType positionType) {
-        this.positionType = positionType;
+    public Object getPositionType() {
+        return null;
     }
 
-    public CoreCompetency getCoreCompetency() {
-        return coreCompetency;
+    public Object getCoreCompetency() {
+        return null;
     }
-
-    public void setCoreCompetency(CoreCompetency coreCompetency) {
-        this.coreCompetency = coreCompetency;
-    }
-
-    public int getId() {
-        return id;
-    }
-
 }
