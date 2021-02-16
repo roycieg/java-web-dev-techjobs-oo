@@ -20,20 +20,17 @@ public class Job {
         nextId++;
     }
 
-    public Job(int id, String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+    public Job(String aname, Employer anemployer, Location alocation, PositionType apositionType, CoreCompetency acoreCompetency) {
         this();
         this.id = id;
-        this.name = name;
-        this.employer = employer;
-        this.location = location;
-        this.positionType = positionType;
-        this.coreCompetency = coreCompetency;
+        this.name = aname;
+        this.employer = anemployer;
+        this.location = alocation;
+        this.positionType = apositionType;
+        this.coreCompetency = acoreCompetency;
     }
 
-    public Job(String product_tester, Employer acme, Location desert, PositionType quality_control, CoreCompetency persistence) {
-    }
-
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
+       // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
     @Override
@@ -48,21 +45,31 @@ public class Job {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-    public String toString(Job obj) {
-        if (obj.getName() == null) {
-            return "\n" + "ID: " + obj.getId() + "\n" + "Data not available" + "\n" + "Employer: " + obj.getEmployer() + "\n" + "Location: " + obj.getLocation() + "\n" + "Position Type: " + obj.getPositionType() + "\n" + "Core Competency: " + obj.getCoreCompetency() + "\n";
-        } else if (obj.getEmployer() == null) {
-            return "\n" + "ID: " + obj.getId() + "\n" + "Name: " + obj.getName() + "\n" + "Data not available" + "\n" + "Location: " + obj.getLocation() + "\n" + "Position Type: " + obj.getPositionType() + "\n" + "Core Competency: " + obj.getCoreCompetency() + "\n";
-        } else if (obj.getLocation() == null) {
-            return "\n" + "ID: " + obj.getId() + "\n" + "Name: " + obj.getName() + "\n" + "Employer: " + obj.getEmployer() + "\n" + "Data not available" + "\n" + "Position Type: " + obj.getPositionType() + "\n" + "Core Competency: " + obj.getCoreCompetency() + "\n";
-        } else if (obj.getPositionType() == null) {
-            return "\n" + "ID: " + obj.getId() + "\n" + "Name: " + obj.getName() + "\n" + "Employer: " + obj.getEmployer() + "\n" + "Location: " + obj.getLocation() + "\n" + "Data not available" + "\n" + "Core Competency: " + obj.getCoreCompetency() + "\n";
-        } else if (obj.getCoreCompetency() == null) {
-            return "\n" + "ID: " + obj.getId() + "\n" + "Name: " + obj.getName() + "\n" + "Employer: " + obj.getEmployer() + "\n" + "Location: " + obj.getLocation() + "\n" + "Position Type: " + obj.getPositionType() + "\n" + "Data not available" + "\n";
-        } else {
-            return "\n" + "ID: " + obj.getId() + "\n" + "Name: " + obj.getName() + "\n" + "Employer: " + obj.getEmployer() + "\n" + "Location: " + obj.getLocation() + "\n" + "Position Type: " + obj.getPositionType() + "\n" + "Core Competency: " + obj.getCoreCompetency() + "\n";
+    @Override
+    public String toString() {
+        String output = "";
+        if (name.equals("")) {
+            name = "Data not available";
         }
+        if (employer.getValue().equals("") || employer.getValue() == null) {
+            employer.setValue("Data not available");
+        }
+        if (location.getValue().equals("") || location.getValue() == null) {
+            location.setValue("Data not available");
+        }
+        if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null) {
+            coreCompetency.setValue("Data not available");
+        }
+        if (positionType.getValue().equals("") || positionType.getValue() == null) {
+            positionType.setValue("Data not available");
+        }
+        output = String.format("\nID: %d\n" +
+                "Name: %s\n" +
+                "Employer: %s\n" +
+                "Location: %s\n" +
+                "Position Type: %s\n" +
+                "Core Competency: %s\n", id, name, employer, location, positionType, coreCompetency);
+        return output;
     }
 
 
